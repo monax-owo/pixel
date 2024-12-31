@@ -59,21 +59,19 @@ pub(super) fn setup_camera(mut commands: Commands, mut images: ResMut<Assets<Ima
 
   let image_handle = images.add(canvas);
 
-  commands.spawn(
-    Camera3dBundle {
-      camera: Camera {
-        order: -1,
-        target: RenderTarget::Image(image_handle.clone()),
-        ..default()
-      },
-      projection: Projection::Orthographic(OrthographicProjection {
-        scaling_mode: ScalingMode::FixedVertical(2.0),
-        ..default()
-      }),
-      transform: Transform::from_xyz(0.0, 0.0, 20.0),
+  commands.spawn(Camera3dBundle {
+    camera: Camera {
+      order: -1,
+      target: RenderTarget::Image(image_handle.clone()),
       ..default()
     },
-  );
+    projection: Projection::Orthographic(OrthographicProjection {
+      scaling_mode: ScalingMode::FixedVertical(2.0),
+      ..default()
+    }),
+    transform: Transform::from_xyz(0.0, 0.0, 20.0),
+    ..default()
+  });
 
   commands.spawn((
     Name::new("Rendering Canvas"),
