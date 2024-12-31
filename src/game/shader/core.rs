@@ -1,32 +1,25 @@
 use bevy::{
   prelude::*,
   render::{camera::*, render_resource::*, view::RenderLayers},
-  sprite::Material2d,
+  sprite::{Material2d, MaterialMesh2dBundle, Mesh2dHandle},
   window::WindowRef,
 };
 
 pub(super) const POST_PROCESSING_PASS_LAYER: RenderLayers = RenderLayers::layer(1);
 
 #[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
-pub(super) struct PostProcessingMaterial {
-  #[uniform(0)]
-  time: f32,
-}
+pub(super) struct PostProcessingMaterial {}
 
-impl PostProcessingMaterial {
-  pub fn update_time_uniform(
-    mut materials: ResMut<Assets<PostProcessingMaterial>>,
-    time: Res<Time>,
-  ) {
-    for material in materials.iter_mut() {
-      material.1.time = time.elapsed_seconds();
-    }
-  }
-}
+impl PostProcessingMaterial {}
 
 impl Material2d for PostProcessingMaterial {}
 
-pub(super) fn setup_camera(mut commands: Commands, mut images: ResMut<Assets<Image>>) {
+pub(super) fn setup_camera(
+  mut commands: Commands,
+  mut images: ResMut<Assets<Image>>,
+  mut meshes: ResMut<Assets<Mesh>>,
+  mut materials: ResMut<Assets<ColorMaterial>>,
+) {
   const RES_WIDTH: u32 = 160;
   const RES_HEIGHT: u32 = 90;
 
@@ -72,9 +65,14 @@ pub(super) fn setup_camera(mut commands: Commands, mut images: ResMut<Assets<Ima
 
   commands.spawn((
     Name::new("Rendering Canvas"),
-    SpriteBundle {
-      texture: image_handle.clone(),
-      transform: Transform::from_scale(Vec3::splat(4.0)),
+    MaterialMesh2dBundle {
+      mesh: Mesh2dHandle(meshes.add(Rectangle::from_size(
+        Vec2::new(RES_WIDTH as f32, RES_HEIGHT as f32) * 4.0,
+      ))),
+      material: materials.add(ColorMaterial {
+        texture: Some(image_handle.clone()),
+        ..default()
+      }),
       ..default()
     },
     POST_PROCESSING_PASS_LAYER,
