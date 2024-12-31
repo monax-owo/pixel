@@ -9,18 +9,22 @@ use std::env;
 
 fn main() {
   let mut app = App::new();
-  app.add_plugins((
-    DefaultPlugins.set(WindowPlugin {
-      primary_window: Some(Window {
-        title: "pixel".into(),
-        present_mode: PresentMode::AutoNoVsync,
-        ..default()
-      }),
-      ..default()
-    }),
-    GamePlugin,
-    BlenvyPlugin::default(),
-  ));
+  app
+    .add_plugins((
+      DefaultPlugins
+        .set(WindowPlugin {
+          primary_window: Some(Window {
+            title: "pixel".into(),
+            present_mode: PresentMode::AutoNoVsync,
+            ..default()
+          }),
+          ..default()
+        })
+        .set(ImagePlugin::default_nearest()),
+      GamePlugin,
+      BlenvyPlugin::default(),
+    ))
+    .insert_resource(Msaa::Off);
 
   if env::args().any(|v| &v == "--gui") {
     use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
