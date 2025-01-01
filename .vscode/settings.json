@@ -6,6 +6,7 @@
     "srgb",
     "srgba",
     "unorm",
+    "vsync",
     "wgsl"
   ]
 }
