@@ -1,6 +1,6 @@
 use bevy::{
   prelude::*,
-  render::{camera::*, render_resource::*, view::RenderLayers},
+  render::{camera::*, render_resource::*, texture::ImageSampler, view::RenderLayers},
   sprite::{Material2d, MaterialMesh2dBundle, Mesh2dHandle},
   window::WindowRef,
 };
@@ -8,11 +8,19 @@ use bevy::{
 pub(super) const POST_PROCESSING_PASS_LAYER: RenderLayers = RenderLayers::layer(1);
 
 #[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
-pub(super) struct PostProcessingMaterial {}
+pub(super) struct PostProcessingMaterial {
+  #[texture(0)]
+  #[sampler(1)]
+  texture: Handle<Image>,
+}
 
 impl PostProcessingMaterial {}
 
-impl Material2d for PostProcessingMaterial {}
+impl Material2d for PostProcessingMaterial {
+  fn fragment_shader() -> ShaderRef {
+    "shaders/shader.wgsl".into()
+  }
+}
 
 pub(super) fn setup_camera(
   mut commands: Commands,
@@ -34,7 +42,7 @@ pub(super) fn setup_camera(
       label: None,
       size: canvas_size,
       dimension: TextureDimension::D2,
-      format: TextureFormat::Bgra8UnormSrgb,
+      format: TextureFormat::Rgba8UnormSrgb,
       mip_level_count: 1,
       sample_count: 1,
       usage: TextureUsages::TEXTURE_BINDING
@@ -42,6 +50,7 @@ pub(super) fn setup_camera(
         | TextureUsages::RENDER_ATTACHMENT,
       view_formats: &[],
     },
+    sampler: ImageSampler::nearest(),
     ..default()
   };
 

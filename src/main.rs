@@ -11,16 +11,14 @@ fn main() {
   let mut app = App::new();
   app
     .add_plugins((
-      DefaultPlugins
-        .set(WindowPlugin {
-          primary_window: Some(Window {
-            title: "pixel".into(),
-            present_mode: PresentMode::AutoNoVsync,
-            ..default()
-          }),
+      DefaultPlugins.set(WindowPlugin {
+        primary_window: Some(Window {
+          title: "pixel".into(),
+          present_mode: PresentMode::AutoNoVsync,
           ..default()
-        })
-        .set(ImagePlugin::default_nearest()),
+        }),
+        ..default()
+      }),
       GamePlugin,
       BlenvyPlugin::default(),
     ))
