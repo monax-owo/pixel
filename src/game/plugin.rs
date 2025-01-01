@@ -4,20 +4,19 @@ use bevy_rapier2d::{
   render::RapierDebugRenderPlugin,
 };
 
-use super::{camera::CameraPlugin, level::LevelPlugin};
+use super::{camera::CameraPlugin, level::LevelPlugin, test::TestPlugin};
 
 pub struct GamePlugin;
 
 impl Plugin for GamePlugin {
-  fn build(&self, app: &mut bevy::prelude::App) {
+  fn build(&self, app: &mut App) {
     let app = app.add_plugins((
       RapierPhysicsPlugin::<NoUserData>::default(),
-      LevelPlugin,
       CameraPlugin,
+      LevelPlugin,
     ));
 
-    if cfg!(debug_assertions) {
-      app.add_plugins(RapierDebugRenderPlugin::default());
-    }
+    #[cfg(debug_assertions)]
+    app.add_plugins((RapierDebugRenderPlugin::default(), TestPlugin));
   }
 }
