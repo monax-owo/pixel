@@ -2,9 +2,9 @@ use bevy::{prelude::*, sprite::Material2dPlugin};
 
 use super::core::{activate_camera, setup_camera, PostProcessingMaterial};
 
-pub struct ShaderPlugin;
+pub struct CameraPlugin;
 
-impl Plugin for ShaderPlugin {
+impl Plugin for CameraPlugin {
   fn build(&self, app: &mut App) {
     app
       .add_plugins(Material2dPlugin::<PostProcessingMaterial>::default())
