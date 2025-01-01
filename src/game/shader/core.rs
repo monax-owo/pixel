@@ -1,26 +1,11 @@
 use bevy::{
   prelude::*,
   render::{camera::*, render_resource::*, texture::ImageSampler, view::RenderLayers},
-  sprite::{Material2d, MaterialMesh2dBundle, Mesh2dHandle},
+  sprite::{MaterialMesh2dBundle, Mesh2dHandle},
   window::WindowRef,
 };
 
 pub(super) const POST_PROCESSING_PASS_LAYER: RenderLayers = RenderLayers::layer(1);
-
-#[derive(Asset, AsBindGroup, Reflect, Debug, Clone)]
-pub(super) struct PostProcessingMaterial {
-  #[texture(0)]
-  #[sampler(1)]
-  texture: Handle<Image>,
-}
-
-impl PostProcessingMaterial {}
-
-impl Material2d for PostProcessingMaterial {
-  fn fragment_shader() -> ShaderRef {
-    "shaders/shader.wgsl".into()
-  }
-}
 
 pub(super) fn setup_camera(
   mut commands: Commands,
@@ -129,6 +114,7 @@ pub(super) fn activate_camera(
   mut cameras: Query<(Entity, &mut Camera)>,
   active_camera: Query<Entity, With<ActiveCamera>>,
 ) {
+  #[cfg(debug_assertions)]
   for mut camera in cameras.iter_mut() {
     // passive_cameraを常に有効化
     if camera.0 == active_camera.single() {
