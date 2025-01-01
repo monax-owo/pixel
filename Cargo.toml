@@ -4,7 +4,6 @@ version = "0.1.0"
 authors = ["monax-owo"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
-resolver = "2"
 
 [dependencies]
 bevy = { workspace = true }
@@ -14,10 +13,11 @@ bevy_rapier2d = "0.27.0"
 blenvy = "0.1.0-alpha.1"
 
 [workspace]
+resolver = "2"
 members = [""]
 
 [workspace.dependencies]
-bevy = { version = "0.14.2", features = ["file_watcher"] }
+bevy = { version = "0.14.2", features = ["file_watcher", "dynamic_linking"] }
 
 # Enable a small amount of optimization in the dev profile.
 [profile.dev]
