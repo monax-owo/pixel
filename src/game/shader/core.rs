@@ -65,7 +65,11 @@ pub(super) fn setup_camera(
       ..default()
     },
     projection: Projection::Orthographic(OrthographicProjection {
-      scaling_mode: ScalingMode::FixedVertical(2.0),
+      scaling_mode: ScalingMode::AutoMin {
+        min_width: RES_WIDTH as f32,
+        min_height: RES_HEIGHT as f32,
+      },
+      scale: 0.1,
       ..default()
     }),
     transform: Transform::from_xyz(0.0, 0.0, 20.0),
@@ -76,7 +80,7 @@ pub(super) fn setup_camera(
     Name::new("Rendering Canvas"),
     MaterialMesh2dBundle {
       mesh: Mesh2dHandle(meshes.add(Rectangle::from_size(
-        Vec2::new(RES_WIDTH as f32, RES_HEIGHT as f32) * 4.0,
+        Vec2::new(RES_WIDTH as f32, RES_HEIGHT as f32) * 1.0,
       ))),
       material: materials.add(ColorMaterial {
         texture: Some(image_handle.clone()),
@@ -100,8 +104,17 @@ pub(super) fn setup_camera(
       camera: Camera {
         #[cfg(debug_assertions)]
         target: RenderTarget::Window(WindowRef::Entity(second_window)),
+        clear_color: ClearColorConfig::Custom(Color::srgb(0.0, 0.0, 0.0)),
         ..default()
       },
+      projection: OrthographicProjection {
+        scaling_mode: ScalingMode::AutoMin {
+          min_width: RES_WIDTH as f32,
+          min_height: RES_HEIGHT as f32,
+        },
+        ..default()
+      },
+      transform: Transform::from_xyz(0.0, 0.0, 20.0),
       ..default()
     },
     ActiveCamera,
