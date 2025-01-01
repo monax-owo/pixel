@@ -54,7 +54,7 @@ pub(super) fn setup_camera(
         min_width: RES_WIDTH as f32,
         min_height: RES_HEIGHT as f32,
       },
-      scale: 0.1,
+      scale: 0.04,
       ..default()
     }),
     transform: Transform::from_xyz(0.0, 0.0, 20.0),
