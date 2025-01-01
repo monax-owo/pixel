@@ -1,0 +1,1 @@
+Pixelate rendering in bevy
