@@ -2,10 +2,10 @@ use bevy::prelude::*;
 use blenvy::{BluePrintBundle, BlueprintInfo};
 
 pub(super) fn setup(mut commands: Commands, mut clear_color: ResMut<ClearColor>) {
-  commands.spawn((BluePrintBundle {
+  commands.spawn(BluePrintBundle {
     blueprint: BlueprintInfo::from_path("blueprints/plane.glb"),
     ..default()
-  },));
+  });
 
   commands.spawn(DirectionalLightBundle {
     transform: Transform::from_rotation(Quat::from_euler(

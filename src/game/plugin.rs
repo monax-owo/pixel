@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-use super::{level::LevelPlugin, camera::CameraPlugin};
+use super::{camera::CameraPlugin, level::LevelPlugin};
 
 pub struct GamePlugin;
 
