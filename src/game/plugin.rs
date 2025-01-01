@@ -4,7 +4,7 @@ use bevy_rapier2d::{
   render::RapierDebugRenderPlugin,
 };
 
-use super::{level::LevelPlugin, camera::CameraPlugin};
+use super::{camera::CameraPlugin, level::LevelPlugin};
 
 pub struct GamePlugin;
 
