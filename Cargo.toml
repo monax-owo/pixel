@@ -8,9 +8,7 @@ resolver = "2"
 
 [dependencies]
 bevy = { workspace = true }
-# bevy-inspector-egui = "0.27.0"
 bevy_editor_pls = "0.10.0"
-bevy_rapier2d = "0.27.0"
 blenvy = "0.1.0-alpha.1"
 
 [workspace]
