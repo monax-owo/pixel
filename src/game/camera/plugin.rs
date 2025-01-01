@@ -2,9 +2,9 @@ use bevy::prelude::*;
 
 use super::core::{activate_camera, setup_camera};
 
-pub struct ShaderPlugin;
+pub struct CameraPlugin;
 
-impl Plugin for ShaderPlugin {
+impl Plugin for CameraPlugin {
   fn build(&self, app: &mut App) {
     app
       .add_systems(Update, activate_camera)
