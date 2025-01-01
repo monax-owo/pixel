@@ -1,7 +1,0 @@
-(
-  assets:
-   [ 
-    ("ground", File ( path: "blueprints/ground.glb" )),
-    ("Material", File ( path: "materials/Material.glb" )),
-   ]
-)
