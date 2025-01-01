@@ -5,7 +5,7 @@ use bevy::{
   window::WindowRef,
 };
 
-pub(super) const POST_PROCESSING_PASS_LAYER: RenderLayers = RenderLayers::layer(1);
+pub(super) const HIGH_RES_LAYERS: RenderLayers = RenderLayers::layer(1);
 
 pub(super) fn setup_camera(
   mut commands: Commands,
@@ -73,7 +73,7 @@ pub(super) fn setup_camera(
       }),
       ..default()
     },
-    POST_PROCESSING_PASS_LAYER,
+    HIGH_RES_LAYERS,
   ));
 
   let second_window = commands
@@ -103,7 +103,7 @@ pub(super) fn setup_camera(
       ..default()
     },
     ActiveCamera,
-    POST_PROCESSING_PASS_LAYER,
+    HIGH_RES_LAYERS,
   ));
 }
 
