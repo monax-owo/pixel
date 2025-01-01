@@ -4,6 +4,8 @@
     "egui",
     "msaa",
     "srgb",
-    "srgba"
+    "srgba",
+    "unorm",
+    "wgsl"
   ]
 }
