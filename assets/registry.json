@@ -15294,6 +15294,22 @@
       "type": "object",
       "typeInfo": "Value"
     },
+    "pixel::game::camera::core::RenderingCanvas": {
+      "isComponent": false,
+      "isResource": true,
+      "items": false,
+      "long_name": "pixel::game::camera::core::RenderingCanvas",
+      "prefixItems": [
+        {
+          "type": {
+            "$ref": "#/$defs/bevy_asset::handle::Handle<bevy_render::texture::image::Image>"
+          }
+        }
+      ],
+      "short_name": "RenderingCanvas",
+      "type": "array",
+      "typeInfo": "TupleStruct"
+    },
     "smallvec::SmallVec<[bevy_ecs::entity::Entity; 8]>": {
       "isComponent": false,
       "isResource": false,

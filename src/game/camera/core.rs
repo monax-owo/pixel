@@ -22,6 +22,10 @@ impl Material2d for PostProcessingMaterial {
   }
 }
 
+#[derive(Resource, Reflect, Debug)]
+#[reflect(Resource)]
+pub struct RenderingCanvas(pub Handle<Image>);
+
 pub(super) fn setup_camera(
   mut commands: Commands,
   mut images: ResMut<Assets<Image>>,
@@ -57,6 +61,8 @@ pub(super) fn setup_camera(
   canvas.resize(canvas_size);
 
   let image_handle = images.add(canvas);
+
+  commands.insert_resource(RenderingCanvas(image_handle.clone()));
 
   commands.spawn((
     Camera3dBundle {
