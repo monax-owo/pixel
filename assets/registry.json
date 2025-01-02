@@ -203,16 +203,16 @@
       "type": "array",
       "typeInfo": "List"
     },
-    "alloc::vec::Vec<blenvy::blueprints::materials::MaterialInfo>": {
+    "alloc::vec::Vec<blenvy::blueprints::s::Info>": {
       "isComponent": false,
       "isResource": false,
       "items": {
         "type": {
-          "$ref": "#/$defs/blenvy::blueprints::materials::MaterialInfo"
+          "$ref": "#/$defs/blenvy::blueprints::s::Info"
         }
       },
-      "long_name": "alloc::vec::Vec<blenvy::blueprints::materials::MaterialInfo>",
-      "short_name": "Vec<MaterialInfo>",
+      "long_name": "alloc::vec::Vec<blenvy::blueprints::s::Info>",
+      "short_name": "Vec<Info>",
       "type": "array",
       "typeInfo": "List"
     },
@@ -1043,10 +1043,10 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::handle::Handle<bevy_pbr::pbr_material::StandardMaterial>": {
+    "bevy_asset::handle::Handle<bevy_pbr::pbr_::Standard>": {
       "isComponent": true,
       "isResource": false,
-      "long_name": "bevy_asset::handle::Handle<bevy_pbr::pbr_material::StandardMaterial>",
+      "long_name": "bevy_asset::handle::Handle<bevy_pbr::pbr_::Standard>",
       "oneOf": [
         {
           "items": false,
@@ -1068,7 +1068,7 @@
           "prefixItems": [
             {
               "type": {
-                "$ref": "#/$defs/bevy_asset::id::AssetId<bevy_pbr::pbr_material::StandardMaterial>"
+                "$ref": "#/$defs/bevy_asset::id::AssetId<bevy_pbr::pbr_::Standard>"
               }
             }
           ],
@@ -1077,14 +1077,14 @@
           "typeInfo": "Tuple"
         }
       ],
-      "short_name": "Handle<StandardMaterial>",
+      "short_name": "Handle<Standard>",
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::handle::Handle<bevy_pbr::wireframe::WireframeMaterial>": {
+    "bevy_asset::handle::Handle<bevy_pbr::wireframe::Wireframe>": {
       "isComponent": true,
       "isResource": false,
-      "long_name": "bevy_asset::handle::Handle<bevy_pbr::wireframe::WireframeMaterial>",
+      "long_name": "bevy_asset::handle::Handle<bevy_pbr::wireframe::Wireframe>",
       "oneOf": [
         {
           "items": false,
@@ -1106,7 +1106,7 @@
           "prefixItems": [
             {
               "type": {
-                "$ref": "#/$defs/bevy_asset::id::AssetId<bevy_pbr::wireframe::WireframeMaterial>"
+                "$ref": "#/$defs/bevy_asset::id::AssetId<bevy_pbr::wireframe::Wireframe>"
               }
             }
           ],
@@ -1115,7 +1115,7 @@
           "typeInfo": "Tuple"
         }
       ],
-      "short_name": "Handle<WireframeMaterial>",
+      "short_name": "Handle<Wireframe>",
       "type": "object",
       "typeInfo": "Enum"
     },
@@ -1347,10 +1347,10 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::handle::Handle<bevy_sprite::mesh2d::color_material::ColorMaterial>": {
+    "bevy_asset::handle::Handle<bevy_sprite::mesh2d::color_::Color>": {
       "isComponent": true,
       "isResource": false,
-      "long_name": "bevy_asset::handle::Handle<bevy_sprite::mesh2d::color_material::ColorMaterial>",
+      "long_name": "bevy_asset::handle::Handle<bevy_sprite::mesh2d::color_::Color>",
       "oneOf": [
         {
           "items": false,
@@ -1372,7 +1372,7 @@
           "prefixItems": [
             {
               "type": {
-                "$ref": "#/$defs/bevy_asset::id::AssetId<bevy_sprite::mesh2d::color_material::ColorMaterial>"
+                "$ref": "#/$defs/bevy_asset::id::AssetId<bevy_sprite::mesh2d::color_::Color>"
               }
             }
           ],
@@ -1381,7 +1381,7 @@
           "typeInfo": "Tuple"
         }
       ],
-      "short_name": "Handle<ColorMaterial>",
+      "short_name": "Handle<Color>",
       "type": "object",
       "typeInfo": "Enum"
     },
@@ -1499,10 +1499,10 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::handle::Handle<pixel::game::camera::core::PostProcessingMaterial>": {
+    "bevy_asset::handle::Handle<pixel::game::camera::core::PostProcessing>": {
       "isComponent": true,
       "isResource": false,
-      "long_name": "bevy_asset::handle::Handle<pixel::game::camera::core::PostProcessingMaterial>",
+      "long_name": "bevy_asset::handle::Handle<pixel::game::camera::core::PostProcessing>",
       "oneOf": [
         {
           "items": false,
@@ -1524,7 +1524,7 @@
           "prefixItems": [
             {
               "type": {
-                "$ref": "#/$defs/bevy_asset::id::AssetId<pixel::game::camera::core::PostProcessingMaterial>"
+                "$ref": "#/$defs/bevy_asset::id::AssetId<pixel::game::camera::core::PostProcessing>"
               }
             }
           ],
@@ -1533,7 +1533,7 @@
           "typeInfo": "Tuple"
         }
       ],
-      "short_name": "Handle<PostProcessingMaterial>",
+      "short_name": "Handle<PostProcessing>",
       "type": "object",
       "typeInfo": "Enum"
     },
@@ -2127,10 +2127,10 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::id::AssetId<bevy_pbr::pbr_material::StandardMaterial>": {
+    "bevy_asset::id::AssetId<bevy_pbr::pbr_::Standard>": {
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_asset::id::AssetId<bevy_pbr::pbr_material::StandardMaterial>",
+      "long_name": "bevy_asset::id::AssetId<bevy_pbr::pbr_::Standard>",
       "oneOf": [
         {
           "additionalProperties": false,
@@ -2169,14 +2169,14 @@
           "typeInfo": "Struct"
         }
       ],
-      "short_name": "AssetId<StandardMaterial>",
+      "short_name": "AssetId<Standard>",
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::id::AssetId<bevy_pbr::wireframe::WireframeMaterial>": {
+    "bevy_asset::id::AssetId<bevy_pbr::wireframe::Wireframe>": {
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_asset::id::AssetId<bevy_pbr::wireframe::WireframeMaterial>",
+      "long_name": "bevy_asset::id::AssetId<bevy_pbr::wireframe::Wireframe>",
       "oneOf": [
         {
           "additionalProperties": false,
@@ -2215,7 +2215,7 @@
           "typeInfo": "Struct"
         }
       ],
-      "short_name": "AssetId<WireframeMaterial>",
+      "short_name": "AssetId<Wireframe>",
       "type": "object",
       "typeInfo": "Enum"
     },
@@ -2495,10 +2495,10 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::id::AssetId<bevy_sprite::mesh2d::color_material::ColorMaterial>": {
+    "bevy_asset::id::AssetId<bevy_sprite::mesh2d::color_::Color>": {
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_asset::id::AssetId<bevy_sprite::mesh2d::color_material::ColorMaterial>",
+      "long_name": "bevy_asset::id::AssetId<bevy_sprite::mesh2d::color_::Color>",
       "oneOf": [
         {
           "additionalProperties": false,
@@ -2537,7 +2537,7 @@
           "typeInfo": "Struct"
         }
       ],
-      "short_name": "AssetId<ColorMaterial>",
+      "short_name": "AssetId<Color>",
       "type": "object",
       "typeInfo": "Enum"
     },
@@ -2679,10 +2679,10 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_asset::id::AssetId<pixel::game::camera::core::PostProcessingMaterial>": {
+    "bevy_asset::id::AssetId<pixel::game::camera::core::PostProcessing>": {
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_asset::id::AssetId<pixel::game::camera::core::PostProcessingMaterial>",
+      "long_name": "bevy_asset::id::AssetId<pixel::game::camera::core::PostProcessing>",
       "oneOf": [
         {
           "additionalProperties": false,
@@ -2721,7 +2721,7 @@
           "typeInfo": "Struct"
         }
       ],
-      "short_name": "AssetId<PostProcessingMaterial>",
+      "short_name": "AssetId<PostProcessing>",
       "type": "object",
       "typeInfo": "Enum"
     },
@@ -4115,11 +4115,11 @@
       "type": "object",
       "typeInfo": "Struct"
     },
-    "bevy_gltf::GltfMaterialExtras": {
+    "bevy_gltf::GltfExtras": {
       "additionalProperties": false,
       "isComponent": true,
       "isResource": false,
-      "long_name": "bevy_gltf::GltfMaterialExtras",
+      "long_name": "bevy_gltf::GltfExtras",
       "properties": {
         "value": {
           "type": {
@@ -4130,7 +4130,7 @@
       "required": [
         "value"
       ],
-      "short_name": "GltfMaterialExtras",
+      "short_name": "GltfExtras",
       "type": "object",
       "typeInfo": "Struct"
     },
@@ -7532,15 +7532,15 @@
       "type": "object",
       "typeInfo": "Struct"
     },
-    "bevy_pbr::material::DefaultOpaqueRendererMethod": {
+    "bevy_pbr::::DefaultOpaqueRendererMethod": {
       "isComponent": false,
       "isResource": false,
       "items": false,
-      "long_name": "bevy_pbr::material::DefaultOpaqueRendererMethod",
+      "long_name": "bevy_pbr::::DefaultOpaqueRendererMethod",
       "prefixItems": [
         {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::material::OpaqueRendererMethod"
+            "$ref": "#/$defs/bevy_pbr::::OpaqueRendererMethod"
           }
         }
       ],
@@ -7548,10 +7548,10 @@
       "type": "array",
       "typeInfo": "TupleStruct"
     },
-    "bevy_pbr::material::OpaqueRendererMethod": {
+    "bevy_pbr::::OpaqueRendererMethod": {
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_pbr::material::OpaqueRendererMethod",
+      "long_name": "bevy_pbr::::OpaqueRendererMethod",
       "oneOf": [
         "Forward",
         "Deferred",
@@ -7592,11 +7592,11 @@
       "type": "object",
       "typeInfo": "Enum"
     },
-    "bevy_pbr::pbr_material::StandardMaterial": {
+    "bevy_pbr::pbr_::Standard": {
       "additionalProperties": false,
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_pbr::pbr_material::StandardMaterial",
+      "long_name": "bevy_pbr::pbr_::Standard",
       "properties": {
         "alpha_mode": {
           "type": {
@@ -7630,7 +7630,7 @@
         },
         "base_color_channel": {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::pbr_material::UvChannel"
+            "$ref": "#/$defs/bevy_pbr::pbr_::UvChannel"
           }
         },
         "base_color_texture": {
@@ -7680,7 +7680,7 @@
         },
         "emissive_channel": {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::pbr_material::UvChannel"
+            "$ref": "#/$defs/bevy_pbr::pbr_::UvChannel"
           }
         },
         "emissive_exposure_weight": {
@@ -7725,7 +7725,7 @@
         },
         "metallic_roughness_channel": {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::pbr_material::UvChannel"
+            "$ref": "#/$defs/bevy_pbr::pbr_::UvChannel"
           }
         },
         "metallic_roughness_texture": {
@@ -7735,7 +7735,7 @@
         },
         "normal_map_channel": {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::pbr_material::UvChannel"
+            "$ref": "#/$defs/bevy_pbr::pbr_::UvChannel"
           }
         },
         "normal_map_texture": {
@@ -7745,7 +7745,7 @@
         },
         "occlusion_channel": {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::pbr_material::UvChannel"
+            "$ref": "#/$defs/bevy_pbr::pbr_::UvChannel"
           }
         },
         "occlusion_texture": {
@@ -7755,7 +7755,7 @@
         },
         "opaque_render_method": {
           "type": {
-            "$ref": "#/$defs/bevy_pbr::material::OpaqueRendererMethod"
+            "$ref": "#/$defs/bevy_pbr::::OpaqueRendererMethod"
           }
         },
         "parallax_depth_scale": {
@@ -7835,14 +7835,14 @@
         "deferred_lighting_pass_id",
         "uv_transform"
       ],
-      "short_name": "StandardMaterial",
+      "short_name": "Standard",
       "type": "object",
       "typeInfo": "Struct"
     },
-    "bevy_pbr::pbr_material::UvChannel": {
+    "bevy_pbr::pbr_::UvChannel": {
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_pbr::pbr_material::UvChannel",
+      "long_name": "bevy_pbr::pbr_::UvChannel",
       "oneOf": [
         "Uv0",
         "Uv1"
@@ -9617,11 +9617,11 @@
       "type": "object",
       "typeInfo": "Struct"
     },
-    "bevy_sprite::mesh2d::color_material::ColorMaterial": {
+    "bevy_sprite::mesh2d::color_::Color": {
       "additionalProperties": false,
       "isComponent": false,
       "isResource": false,
-      "long_name": "bevy_sprite::mesh2d::color_material::ColorMaterial",
+      "long_name": "bevy_sprite::mesh2d::color_::Color",
       "properties": {
         "color": {
           "type": {
@@ -9637,7 +9637,7 @@
       "required": [
         "color"
       ],
-      "short_name": "ColorMaterial",
+      "short_name": "Color",
       "type": "object",
       "typeInfo": "Struct"
     },
@@ -13352,11 +13352,11 @@
       "type": "object",
       "typeInfo": "Struct"
     },
-    "blenvy::blueprints::materials::MaterialInfo": {
+    "blenvy::blueprints::s::Info": {
       "additionalProperties": false,
       "isComponent": false,
       "isResource": false,
-      "long_name": "blenvy::blueprints::materials::MaterialInfo",
+      "long_name": "blenvy::blueprints::s::Info",
       "properties": {
         "name": {
           "type": {
@@ -13373,23 +13373,23 @@
         "name",
         "path"
       ],
-      "short_name": "MaterialInfo",
+      "short_name": "Info",
       "type": "object",
       "typeInfo": "Struct"
     },
-    "blenvy::blueprints::materials::MaterialInfos": {
+    "blenvy::blueprints::s::Infos": {
       "isComponent": true,
       "isResource": false,
       "items": false,
-      "long_name": "blenvy::blueprints::materials::MaterialInfos",
+      "long_name": "blenvy::blueprints::s::Infos",
       "prefixItems": [
         {
           "type": {
-            "$ref": "#/$defs/alloc::vec::Vec<blenvy::blueprints::materials::MaterialInfo>"
+            "$ref": "#/$defs/alloc::vec::Vec<blenvy::blueprints::s::Info>"
           }
         }
       ],
-      "short_name": "MaterialInfos",
+      "short_name": "Infos",
       "type": "array",
       "typeInfo": "TupleStruct"
     },

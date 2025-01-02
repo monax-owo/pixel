@@ -4,7 +4,7 @@ use bevy_rapier2d::{
   render::RapierDebugRenderPlugin,
 };
 
-use super::{camera::CameraPlugin, level::LevelPlugin, test::TestPlugin};
+use super::{camera::CameraPlugin, level::LevelPlugin, player::PlayerPlugin, test::TestPlugin};
 
 pub struct GamePlugin;
 
@@ -14,6 +14,7 @@ impl Plugin for GamePlugin {
       RapierPhysicsPlugin::<NoUserData>::default(),
       CameraPlugin,
       LevelPlugin,
+      PlayerPlugin,
     ));
 
     #[cfg(debug_assertions)]
