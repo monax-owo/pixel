@@ -8,7 +8,7 @@ impl Plugin for CameraPlugin {
   fn build(&self, app: &mut App) {
     app
       .add_plugins(Material2dPlugin::<PostProcessingMaterial>::default())
-      .add_systems(Update, activate_camera)
-      .add_systems(Startup, setup_camera);
+      .add_systems(Startup, setup_camera)
+      .add_systems(Update, activate_camera);
   }
 }
