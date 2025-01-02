@@ -2,7 +2,6 @@ use bevy::{
   prelude::*,
   render::{camera::*, render_resource::*, texture::ImageSampler, view::RenderLayers},
   sprite::{Material2d, MaterialMesh2dBundle, Mesh2dHandle},
-  window::WindowRef,
 };
 
 pub(super) const POST_PROCESSING_PASS_LAYER: RenderLayers = RenderLayers::layer(1);
@@ -91,19 +90,10 @@ pub(super) fn setup_camera(
     POST_PROCESSING_PASS_LAYER,
   ));
 
-  let second_window = commands
-    .spawn(Window {
-      title: "pixel - debug".to_owned(),
-      ..default()
-    })
-    .id();
-
   commands.spawn((
     Name::new("Rendering Camera"),
     Camera2dBundle {
       camera: Camera {
-        #[cfg(debug_assertions)]
-        target: RenderTarget::Window(WindowRef::Entity(second_window)),
         clear_color: ClearColorConfig::Custom(Color::srgb(0.0, 0.0, 0.0)),
         ..default()
       },

@@ -28,7 +28,13 @@ fn main() {
     use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
     use bevy_editor_pls::EditorPlugin;
 
-    app.add_plugins((EditorPlugin::default(), FrameTimeDiagnosticsPlugin));
+    app.add_plugins((
+      EditorPlugin::new().in_new_window(Window {
+        title: "pixel - editor".into(),
+        ..default()
+      }),
+      FrameTimeDiagnosticsPlugin,
+    ));
   }
 
   app.run();
