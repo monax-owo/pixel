@@ -3,6 +3,7 @@
     "blenvy",
     "egui",
     "msaa",
+    "polyline",
     "srgb",
     "srgba",
     "unorm",
