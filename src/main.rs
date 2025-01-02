@@ -24,17 +24,14 @@ fn main() {
     ))
     .insert_resource(Msaa::Off);
 
-  if env::args().any(|v| &v == "--gui") {
-    use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
-    use bevy_editor_pls::EditorPlugin;
+  #[cfg(debug_assertions)]
+  {
+    if env::args().any(|v| &v == "--gui") {
+      use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
+      use bevy_editor_pls::EditorPlugin;
 
-    app.add_plugins((
-      EditorPlugin::new().in_new_window(Window {
-        title: "pixel - editor".into(),
-        ..default()
-      }),
-      FrameTimeDiagnosticsPlugin,
-    ));
+      app.add_plugins((EditorPlugin::new(), FrameTimeDiagnosticsPlugin));
+    }
   }
 
   app.run();
