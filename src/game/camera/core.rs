@@ -57,23 +57,26 @@ pub(super) fn setup_camera(
 
   let image_handle = images.add(canvas);
 
-  commands.spawn(Camera3dBundle {
-    camera: Camera {
-      order: -1,
-      target: RenderTarget::Image(image_handle.clone()),
+  commands.spawn((
+    Camera3dBundle {
+      camera: Camera {
+        order: -1,
+        target: RenderTarget::Image(image_handle.clone()),
+        ..default()
+      },
+      projection: Projection::Orthographic(OrthographicProjection {
+        scaling_mode: ScalingMode::AutoMin {
+          min_width: RES_WIDTH as f32,
+          min_height: RES_HEIGHT as f32,
+        },
+        scale: 0.1,
+        ..default()
+      }),
+      transform: Transform::from_xyz(0.0, 0.0, 20.0),
       ..default()
     },
-    projection: Projection::Orthographic(OrthographicProjection {
-      scaling_mode: ScalingMode::AutoMin {
-        min_width: RES_WIDTH as f32,
-        min_height: RES_HEIGHT as f32,
-      },
-      scale: 0.1,
-      ..default()
-    }),
-    transform: Transform::from_xyz(0.0, 0.0, 20.0),
-    ..default()
-  });
+    ActiveCamera::Camera3D,
+  ));
 
   commands.spawn((
     Name::new("Rendering Canvas"),
@@ -107,22 +110,21 @@ pub(super) fn setup_camera(
       transform: Transform::from_xyz(0.0, 0.0, 20.0),
       ..default()
     },
-    ActiveCamera,
+    ActiveCamera::Camera2D,
     POST_PROCESSING_PASS_LAYER,
   ));
 }
 
 #[derive(Component, Reflect)]
-pub(super) struct ActiveCamera;
+pub enum ActiveCamera {
+  Camera2D,
+  Camera3D,
+}
 
-pub(super) fn activate_camera(
-  mut cameras: Query<(Entity, &mut Camera)>,
-  active_camera: Query<Entity, With<ActiveCamera>>,
-) {
-  for mut camera in cameras.iter_mut() {
-    // passive_cameraを常に有効化
-    if camera.0 == active_camera.single() {
-      camera.1.is_active = true;
+pub(super) fn activate_camera(mut active_cameras: Query<(Entity, &mut Camera, &ActiveCamera)>) {
+  for mut active_camera in active_cameras.iter_mut() {
+    if let ActiveCamera::Camera2D = *active_camera.2 {
+      active_camera.1.is_active = true;
     }
   }
 }
