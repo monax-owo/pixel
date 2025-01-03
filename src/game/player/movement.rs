@@ -70,7 +70,7 @@ pub(super) fn update_movement(
   )>,
 ) {
   if let Ok((mut player, mut controller, ground_sensor)) = player_query.get_single_mut() {
-    if ground_sensor.grounded && player.vertical_accel >= 0.0 {
+    if ground_sensor.grounded && player.vertical_accel > 0.0 {
       // 弱い重力を加える
       player.vertical_accel =
         (player.vertical_accel - player.vertical_speed * 6.0 * time.delta_seconds()).min(0.0);
