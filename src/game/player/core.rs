@@ -5,7 +5,7 @@ use bevy_rapier2d::prelude::*;
 #[derive(Component, Reflect, Debug)]
 pub struct Player {}
 
-pub(super) fn setup(
+pub(super) fn setup_player(
   mut commands: Commands,
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<StandardMaterial>>,

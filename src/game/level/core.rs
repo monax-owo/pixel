@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use bevy_rapier2d::prelude::*;
 use blenvy::{BluePrintBundle, BlueprintInfo};
 
-pub(super) fn setup(mut commands: Commands, mut clear_color: ResMut<ClearColor>) {
+pub(super) fn setup_level(mut commands: Commands, mut clear_color: ResMut<ClearColor>) {
   commands.spawn(BluePrintBundle {
     blueprint: BlueprintInfo::from_path("blueprints/ground.glb"),
     ..default()
