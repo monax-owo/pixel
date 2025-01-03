@@ -1,4 +1,4 @@
-pub(crate) mod core;
-pub(crate) mod plugin;
+pub(super) mod core;
+pub(super) mod plugin;
 
 pub use plugin::*;
