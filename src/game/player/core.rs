@@ -2,6 +2,11 @@ use bevy::{color::palettes::css, prelude::*};
 use bevy_rapier2d::prelude::*;
 // use blenvy::{BluePrintBundle, BlueprintInfo};
 
+pub const PLAYER_HALF_HEIGHT: f32 = 0.1;
+pub const PLAYER_RADIUS: f32 = 0.1;
+pub const PLAYER_HEIGHT: f32 = PLAYER_HALF_HEIGHT + PLAYER_RADIUS;
+pub const PLAYER_OFFSET: f32 = 0.01;
+
 #[derive(Component, Reflect, Debug)]
 pub struct Player {}
 
@@ -13,11 +18,11 @@ pub(super) fn setup_player(
   commands.spawn((
     Name::new("Player"),
     PbrBundle {
-      mesh: meshes.add(Capsule3d::new(0.1, 0.2)),
+      mesh: meshes.add(Capsule3d::new(PLAYER_RADIUS, PLAYER_HALF_HEIGHT * 2.0)),
       material: materials.add(Color::Srgba(css::MAGENTA)),
       ..default()
     },
-    Collider::capsule_y(0.1, 0.1),
+    Collider::capsule_y(PLAYER_HALF_HEIGHT, PLAYER_RADIUS),
     RigidBody::KinematicVelocityBased,
     KinematicCharacterController {
       up: Vec2::Y,
