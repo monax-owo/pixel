@@ -49,7 +49,7 @@ pub(super) fn setup_player(
     Name::new("Player"),
     Player { ..default() },
     GroundSensor {
-      toi: 0.05,
+      toi: 0.02,
       ..default()
     },
     PbrBundle {
