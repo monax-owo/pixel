@@ -15310,6 +15310,80 @@
       "type": "array",
       "typeInfo": "TupleStruct"
     },
+    "pixel::game::player::core::Player": {
+      "additionalProperties": false,
+      "isComponent": true,
+      "isResource": false,
+      "long_name": "pixel::game::player::core::Player",
+      "properties": {
+        "direction": {
+          "type": {
+            "$ref": "#/$defs/glam::Vec2"
+          }
+        },
+        "horizontal_speed": {
+          "type": {
+            "$ref": "#/$defs/f32"
+          }
+        },
+        "jump_cool_time": {
+          "type": {
+            "$ref": "#/$defs/bevy_time::timer::Timer"
+          }
+        },
+        "jump_max_count": {
+          "type": {
+            "$ref": "#/$defs/u32"
+          }
+        },
+        "vertical_accel": {
+          "type": {
+            "$ref": "#/$defs/f32"
+          }
+        },
+        "vertical_speed": {
+          "type": {
+            "$ref": "#/$defs/f32"
+          }
+        }
+      },
+      "required": [
+        "direction",
+        "vertical_accel",
+        "horizontal_speed",
+        "vertical_speed",
+        "jump_max_count",
+        "jump_cool_time"
+      ],
+      "short_name": "Player",
+      "type": "object",
+      "typeInfo": "Struct"
+    },
+    "pixel::game::player::movement::GroundSensor": {
+      "additionalProperties": false,
+      "isComponent": true,
+      "isResource": false,
+      "long_name": "pixel::game::player::movement::GroundSensor",
+      "properties": {
+        "grounded": {
+          "type": {
+            "$ref": "#/$defs/bool"
+          }
+        },
+        "toi": {
+          "type": {
+            "$ref": "#/$defs/f32"
+          }
+        }
+      },
+      "required": [
+        "grounded",
+        "toi"
+      ],
+      "short_name": "GroundSensor",
+      "type": "object",
+      "typeInfo": "Struct"
+    },
     "smallvec::SmallVec<[bevy_ecs::entity::Entity; 8]>": {
       "isComponent": false,
       "isResource": false,
