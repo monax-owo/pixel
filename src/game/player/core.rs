@@ -49,7 +49,7 @@ pub(super) fn setup_player(
     Name::new("Player"),
     Player { ..default() },
     GroundSensor {
-      toi: 0.02,
+      toi: 0.01,
       ..default()
     },
     PbrBundle {
@@ -62,7 +62,7 @@ pub(super) fn setup_player(
     KinematicCharacterController {
       up: Vec2::Y,
       offset: CharacterLength::Absolute(PLAYER_OFFSET),
-      snap_to_ground: Some(CharacterLength::Absolute(0.04)),
+      snap_to_ground: Some(CharacterLength::Absolute(0.4)),
       max_slope_climb_angle: 45_f32.to_radians(),
       min_slope_slide_angle: 30_f32.to_radians(),
       ..default()
