@@ -2,10 +2,12 @@
 // use bevy_rapier2d::prelude::*;
 // use blenvy::{BluePrintBundle, BlueprintInfo};
 
+pub mod dev;
 pub mod game;
 
 use bevy::{prelude::*, window::PresentMode};
 use blenvy::BlenvyPlugin;
+use dev::DevPlugin;
 use game::GamePlugin;
 use std::env;
 
@@ -28,6 +30,8 @@ fn main() {
 
   #[cfg(debug_assertions)]
   {
+    app.add_plugins(DevPlugin);
+
     if env::args().any(|v| &v == "--gui") {
       use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
       use bevy_editor_pls::EditorPlugin;
