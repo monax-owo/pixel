@@ -141,9 +141,9 @@ pub(super) fn setup_camera(
 pub struct ActiveCamera;
 
 pub(super) fn activate_camera(
-  mut active_cameras: Query<(Entity, &mut Camera), (With<Camera2d>, With<ActiveCamera>)>,
+  mut active_cameras: Query<&mut Camera, (With<Camera2d>, With<ActiveCamera>)>,
 ) {
   for mut active_camera in active_cameras.iter_mut() {
-    active_camera.1.is_active = true;
+    active_camera.is_active = true;
   }
 }
