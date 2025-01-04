@@ -22,6 +22,14 @@ pub(super) fn setup_level(mut commands: Commands, mut clear_color: ResMut<ClearC
     TransformBundle::default(),
   ));
 
+  const LENGTH: f32 = 20.0;
+
+  commands.spawn((
+    Name::new("Ground 2"),
+    Collider::polyline(vec![Vec2::new(-LENGTH, 0.0), Vec2::new(LENGTH, 0.0)], None),
+    TransformBundle::from_transform(Transform::from_xyz(0.0, -4.0, 0.0)),
+  ));
+
   commands.spawn(DirectionalLightBundle {
     transform: Transform::from_rotation(Quat::from_euler(
       EulerRot::XYZ,
