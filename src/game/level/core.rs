@@ -4,7 +4,7 @@ use blenvy::{BluePrintBundle, BlueprintInfo};
 
 pub(super) fn setup_level(mut commands: Commands, mut clear_color: ResMut<ClearColor>) {
   commands.spawn(BluePrintBundle {
-    blueprint: BlueprintInfo::from_path("blueprints/ground.glb"),
+    blueprint: BlueprintInfo::from_path("blueprints/level.glb"),
     ..default()
   });
 
