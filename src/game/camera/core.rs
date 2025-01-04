@@ -32,8 +32,13 @@ pub(super) fn setup_camera(
   mut meshes: ResMut<Assets<Mesh>>,
   mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
-  const RES_WIDTH: u32 = 160;
-  const RES_HEIGHT: u32 = 90;
+  const ASPECT_WIDTH: u32 = 16;
+  const ASPECT_HEIGHT: u32 = 9;
+
+  const SCALE: u32 = 20;
+
+  const RES_WIDTH: u32 = ASPECT_WIDTH * SCALE;
+  const RES_HEIGHT: u32 = ASPECT_HEIGHT * SCALE;
 
   let canvas_size = Extent3d {
     width: RES_WIDTH,
@@ -73,10 +78,10 @@ pub(super) fn setup_camera(
       },
       projection: Projection::Orthographic(OrthographicProjection {
         scaling_mode: ScalingMode::AutoMin {
-          min_width: RES_WIDTH as f32,
-          min_height: RES_HEIGHT as f32,
+          min_width: ASPECT_WIDTH as f32,
+          min_height: ASPECT_HEIGHT as f32,
         },
-        scale: 0.1,
+        scale: 0.6,
         ..default()
       }),
       transform: Transform::from_xyz(0.0, 0.0, 20.0),
