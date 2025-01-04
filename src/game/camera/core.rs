@@ -70,6 +70,7 @@ pub(super) fn setup_camera(
   commands.insert_resource(RenderingCanvas(image_handle.clone()));
 
   commands.spawn((
+    Name::new("Main Camera"),
     Camera3dBundle {
       camera: Camera {
         order: -1,
@@ -87,7 +88,7 @@ pub(super) fn setup_camera(
       transform: Transform::from_xyz(0.0, 0.0, 20.0),
       ..default()
     },
-    ActiveCamera::Camera3D,
+    ActiveCamera,
   ));
 
   commands.spawn((
@@ -131,21 +132,18 @@ pub(super) fn setup_camera(
       transform: Transform::from_xyz(0.0, 0.0, 20.0),
       ..default()
     },
-    ActiveCamera::Camera2D,
+    ActiveCamera,
     POST_PROCESSING_PASS_LAYER,
   ));
 }
 
 #[derive(Component, Reflect)]
-pub enum ActiveCamera {
-  Camera2D,
-  Camera3D,
-}
+pub struct ActiveCamera;
 
-pub(super) fn activate_camera(mut active_cameras: Query<(Entity, &mut Camera, &ActiveCamera)>) {
+pub(super) fn activate_camera(
+  mut active_cameras: Query<(Entity, &mut Camera), (With<Camera2d>, With<ActiveCamera>)>,
+) {
   for mut active_camera in active_cameras.iter_mut() {
-    if let ActiveCamera::Camera2D = *active_camera.2 {
-      active_camera.1.is_active = true;
-    }
+    active_camera.1.is_active = true;
   }
 }
