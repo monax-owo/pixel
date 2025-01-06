@@ -15294,6 +15294,25 @@
       "type": "object",
       "typeInfo": "Value"
     },
+    "pixel::dev::core::DebugStore": {
+      "additionalProperties": false,
+      "isComponent": false,
+      "isResource": true,
+      "long_name": "pixel::dev::core::DebugStore",
+      "properties": {
+        "sample": {
+          "type": {
+            "$ref": "#/$defs/bool"
+          }
+        }
+      },
+      "required": [
+        "sample"
+      ],
+      "short_name": "DebugStore",
+      "type": "object",
+      "typeInfo": "Struct"
+    },
     "pixel::game::camera::core::RenderingCanvas": {
       "isComponent": false,
       "isResource": true,
