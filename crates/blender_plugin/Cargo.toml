@@ -1,0 +1,8 @@
+[package]
+name = "blender_plugin"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bevy = { workspace = true }
+serde = { version = "1.0.217", features = ["derive"] }

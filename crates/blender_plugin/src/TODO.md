@@ -1,0 +1,3 @@
+BlenderPluginを作る
+Serdeはこのクレートのみで使用するようにする
+Blenderファイルが更新されたらコンソールにPythonのコマンドを送る

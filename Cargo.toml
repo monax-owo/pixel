@@ -14,7 +14,7 @@ blenvy = "0.1.0-alpha.1"
 
 [workspace]
 resolver = "2"
-members = [""]
+members = ["crates/*"]
 
 [workspace.dependencies]
 bevy = { version = "0.14.2", features = ["file_watcher"] }

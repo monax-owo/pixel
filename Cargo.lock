@@ -1352,6 +1352,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "blender_plugin"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "serde",
+]
+
+[[package]]
 name = "blenvy"
 version = "0.1.0-alpha.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
