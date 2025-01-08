@@ -6,7 +6,7 @@ pub use core::*;
 
 use bevy::prelude::*;
 
-pub struct BlenderHotReloadPlugin {}
+pub struct BlenderHotReloadPlugin;
 
 impl Plugin for BlenderHotReloadPlugin {
   fn build(&self, app: &mut App) {
