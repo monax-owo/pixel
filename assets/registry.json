@@ -15408,20 +15408,20 @@
       "isResource": true,
       "long_name": "pixel::dev::core::DebugStore",
       "properties": {
-        "handle": {
-          "type": {
-            "$ref": "#/$defs/bevy_asset::handle::Handle<blender_plugin::asset::BlenderAsset>"
-          }
-        },
-        "sample": {
+        "bool": {
           "type": {
             "$ref": "#/$defs/bool"
+          }
+        },
+        "handle_1": {
+          "type": {
+            "$ref": "#/$defs/bevy_asset::handle::Handle<blender_plugin::asset::BlenderAsset>"
           }
         }
       },
       "required": [
-        "sample",
-        "handle"
+        "bool",
+        "handle_1"
       ],
       "short_name": "DebugStore",
       "type": "object",
