@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 bevy = { workspace = true }
 serde = { version = "1.0.217", features = ["derive"] }
+thiserror = "2.0.9"

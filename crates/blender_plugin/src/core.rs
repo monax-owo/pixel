@@ -2,8 +2,6 @@ use std::collections::HashMap;
 
 use bevy::{prelude::*, scene::ron::Value};
 
-// TODO:AssetLoader
-
 #[derive(Resource, Default)]
 pub struct BlenderParserHooks {
   pub hooks: Vec<Box<dyn Sync + Send + Fn(Entity, HashMap<&str, Value>) -> ()>>,
@@ -21,3 +19,5 @@ impl BlenderParserHook for App {
     // self.insert_resource()
   }
 }
+
+pub(super) fn parser() {}
