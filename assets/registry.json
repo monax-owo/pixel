@@ -13234,6 +13234,30 @@
       "type": "string",
       "typeInfo": "Enum"
     },
+    "blender_plugin::asset::BlenderAsset": {
+      "isComponent": false,
+      "isResource": false,
+      "long_name": "blender_plugin::asset::BlenderAsset",
+      "oneOf": [
+        {
+          "items": false,
+          "long_name": "Test",
+          "prefixItems": [
+            {
+              "type": {
+                "$ref": "#/$defs/alloc::string::String"
+              }
+            }
+          ],
+          "short_name": "Test",
+          "type": "array",
+          "typeInfo": "Tuple"
+        }
+      ],
+      "short_name": "BlenderAsset",
+      "type": "object",
+      "typeInfo": "Enum"
+    },
     "blenvy::blueprints::animation::AnimationInfo": {
       "additionalProperties": false,
       "isComponent": false,
@@ -15384,6 +15408,11 @@
       "isResource": true,
       "long_name": "pixel::dev::core::DebugStore",
       "properties": {
+        "handle": {
+          "type": {
+            "$ref": "#/$defs/bevy_asset::handle::Handle<blender_plugin::asset::BlenderAsset>"
+          }
+        },
         "sample": {
           "type": {
             "$ref": "#/$defs/bool"
@@ -15391,7 +15420,8 @@
         }
       },
       "required": [
-        "sample"
+        "sample",
+        "handle"
       ],
       "short_name": "DebugStore",
       "type": "object",

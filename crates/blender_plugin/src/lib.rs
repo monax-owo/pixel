@@ -11,8 +11,9 @@ pub struct BlenderHotReloadPlugin;
 impl Plugin for BlenderHotReloadPlugin {
   fn build(&self, app: &mut App) {
     app
-      .init_asset::<BlenderAsset>()
       .init_asset_loader::<BlenderAssetLoader>()
-      .init_resource::<BlenderParserHooks>();
+      .init_asset::<BlenderAsset>()
+      .init_resource::<BlenderParserHooks>()
+      .register_type::<BlenderAsset>();
   }
 }

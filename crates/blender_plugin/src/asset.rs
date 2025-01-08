@@ -4,7 +4,7 @@ use bevy::{
 };
 use thiserror::Error;
 
-#[derive(Asset, TypePath, Debug)]
+#[derive(Asset, Reflect, Debug)]
 pub enum BlenderAsset {
   Test(String),
 }
