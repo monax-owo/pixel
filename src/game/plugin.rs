@@ -3,6 +3,7 @@ use bevy_rapier2d::{
   plugin::{NoUserData, RapierPhysicsPlugin},
   render::RapierDebugRenderPlugin,
 };
+use blender_plugin::BlenderHotReloadPlugin;
 
 use super::{camera::CameraPlugin, level::LevelPlugin, player::PlayerPlugin, test::TestPlugin};
 
@@ -15,6 +16,7 @@ impl Plugin for GamePlugin {
       CameraPlugin,
       LevelPlugin,
       PlayerPlugin,
+      BlenderHotReloadPlugin,
     ));
 
     #[cfg(debug_assertions)]
