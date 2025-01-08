@@ -6,7 +6,7 @@ use thiserror::Error;
 
 #[derive(Asset, TypePath, Debug)]
 pub enum BlenderAsset {
-  Test,
+  Test(String),
 }
 
 #[derive(Default)]
@@ -17,6 +17,8 @@ pub struct BlenderAssetLoader;
 pub enum BlenderAssetLoaderError {
   #[error("Could not load file: {0}")]
   Io(#[from] std::io::Error),
+  #[error("Could not parse file: {0}")]
+  Parse(#[from] std::string::FromUtf8Error),
 }
 
 impl AssetLoader for BlenderAssetLoader {
@@ -26,10 +28,16 @@ impl AssetLoader for BlenderAssetLoader {
 
   async fn load<'a>(
     &'a self,
-    _reader: &'a mut Reader<'_>,
+    reader: &'a mut Reader<'_>,
     _settings: &'a Self::Settings,
     _load_context: &'a mut LoadContext<'_>,
   ) -> Result<Self::Asset, Self::Error> {
-    Ok(BlenderAsset::Test)
+    let mut buf = Vec::new();
+    reader.read_to_end(&mut buf).await?;
+    let string = match String::from_utf8(buf) {
+      Ok(v) => v,
+      Err(e) => return Err(BlenderAssetLoaderError::Parse(e)),
+    };
+    Ok(BlenderAsset::Test(string))
   }
 }
