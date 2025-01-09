@@ -5,6 +5,13 @@
   "tasks": [
     {
       "type": "cargo",
+      "command": "run",
+      "args": ["--", "--gui"],
+      "problemMatcher": ["$rustc"],
+      "label": "run with gui"
+    },
+    {
+      "type": "cargo",
       "command": "watch",
       "args": ["-w", "./src", "-i", "*.md", "-x", "run"],
       "problemMatcher": ["$rustc"],
