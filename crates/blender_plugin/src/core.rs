@@ -4,7 +4,7 @@ use bevy::{prelude::*, scene::ron::Value};
 
 #[derive(Resource, Default)]
 pub struct BlenderParserHooks {
-  pub hooks: Vec<Box<dyn Sync + Send + Fn(Entity, HashMap<&str, Value>) -> ()>>,
+  pub hooks: Vec<Box<dyn Sync + Send + Fn(Entity, HashMap<&str, Value>) -> Result<(), ()>>>,
 }
 
 pub trait BlenderParserHook {
@@ -20,4 +20,12 @@ impl BlenderParserHook for App {
   }
 }
 
-pub(super) fn parser() {}
+pub(super) fn parser(blender_parser_hooks: Res<BlenderParserHooks>) {
+  for parser in blender_parser_hooks.hooks.iter() {
+    if let Ok(_) = parser(Entity::from_bits(1), HashMap::new()) {
+      return;
+    }
+  }
+
+  println!("parser is not found.");
+}
