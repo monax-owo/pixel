@@ -1,3 +1,2 @@
-BlenderPluginを作る
-Serdeはこのクレートのみで使用するようにする
-Blenderファイルが更新されたらコンソールにPythonのコマンドを送る
+Blender ファイルが更新されたらコンソールに Python のコマンドを送る
+Debug 時のみ使用したいシステム等を切り分ける
