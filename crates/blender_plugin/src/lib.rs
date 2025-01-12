@@ -15,8 +15,10 @@ impl Plugin for BlenderHotReloadPlugin {
     app
       .init_asset_loader::<BlenderAssetLoader>()
       .init_asset::<BlenderAsset>()
-      .init_resource::<BlenderFiles>()
       .init_resource::<BlenderParserHooks>()
       .register_type::<BlenderAsset>();
+
+    #[cfg(debug_assertions)]
+    app.add_plugins(BlendPlugin::new(vec!["sample.txt".into()]));
   }
 }
