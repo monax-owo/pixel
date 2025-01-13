@@ -13397,9 +13397,15 @@
           "type": {
             "$ref": "#/$defs/alloc::vec::Vec<(std::path::PathBuf, core::option::Option<bevy_asset::handle::Handle<blender_plugin::blend::BlendFile>>)>"
           }
+        },
+        "root": {
+          "type": {
+            "$ref": "#/$defs/std::path::PathBuf"
+          }
         }
       },
       "required": [
+        "root",
         "files"
       ],
       "short_name": "BlendFiles",

@@ -19,6 +19,9 @@ impl Plugin for BlenderHotReloadPlugin {
       .register_type::<BlenderAsset>();
 
     #[cfg(debug_assertions)]
-    app.add_plugins(BlendPlugin::new(vec!["sample.txt".into()]));
+    {
+      let root_path = std::env::current_dir().unwrap().join("assets");
+      app.add_plugins(BlendPlugin::new(root_path, vec!["sample.txt".into()]));
+    }
   }
 }

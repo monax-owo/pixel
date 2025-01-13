@@ -7,12 +7,13 @@ use bevy::{
 use thiserror::Error;
 
 pub(super) struct BlendPlugin {
+  pub root: PathBuf,
   pub paths: Vec<PathBuf>,
 }
 
 impl BlendPlugin {
-  pub fn new(paths: Vec<PathBuf>) -> Self {
-    Self { paths }
+  pub fn new(root: PathBuf, paths: Vec<PathBuf>) -> Self {
+    Self { root, paths }
   }
 }
 
@@ -24,6 +25,7 @@ impl Plugin for BlendPlugin {
       .init_asset_loader::<BlendFileLoader>()
       .init_asset::<BlendFile>()
       .insert_resource::<BlendFiles>(BlendFiles {
+        root: self.root.clone(),
         files: self.paths.clone().into_iter().map(|v| (v, None)).collect(),
       })
       .register_type::<BlendFile>()
@@ -59,8 +61,9 @@ impl AssetLoader for BlendFileLoader {
   }
 }
 
-#[derive(Resource, Reflect, Default, Debug)]
+#[derive(Resource, Reflect, Debug)]
 pub struct BlendFiles {
+  pub root: PathBuf,
   pub files: Vec<(PathBuf, Option<Handle<BlendFile>>)>,
 }
 
@@ -70,10 +73,18 @@ fn setup(asset_server: Res<AssetServer>, mut blend_files: ResMut<BlendFiles>) {
   }
 }
 
-fn update(mut events: EventReader<AssetEvent<BlendFile>>) {
+fn update(
+  asset_server: Res<AssetServer>,
+  blend_files: Res<BlendFiles>,
+  mut events: EventReader<AssetEvent<BlendFile>>,
+) {
   for event in events.read() {
     match event {
-      AssetEvent::Modified { id } => println!("Modified!: {}", id),
+      AssetEvent::Added { id } | AssetEvent::Modified { id } => {
+        let asset_path = asset_server.get_path(*id).unwrap();
+        let path = blend_files.root.join(asset_path.path());
+        println!("Modified!: {}", path.to_string_lossy());
+      }
       _ => (),
     }
   }
