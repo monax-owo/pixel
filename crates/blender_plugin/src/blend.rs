@@ -25,7 +25,7 @@ impl Plugin for BlendPlugin {
       .init_asset_loader::<BlendFileLoader>()
       .init_asset::<BlendFile>()
       .insert_resource::<BlendResource>(BlendResource {
-        root: self.root.clone(),
+        assets_root: self.root.clone(),
         files: self.paths.clone().into_iter().map(|v| (v, None)).collect(),
       })
       .register_type::<BlendFile>()
@@ -63,7 +63,7 @@ impl AssetLoader for BlendFileLoader {
 
 #[derive(Resource, Reflect, Debug)]
 pub struct BlendResource {
-  pub root: PathBuf,
+  pub assets_root: PathBuf,
   pub files: Vec<(PathBuf, Option<Handle<BlendFile>>)>,
 }
 
@@ -82,7 +82,7 @@ fn update(
     match event {
       AssetEvent::Added { id } | AssetEvent::Modified { id } => {
         let asset_path = asset_server.get_path(*id).unwrap();
-        let path = blend_files.root.join(asset_path.path());
+        let path = blend_files.assets_root.join(asset_path.path());
         println!("Modified!: {}", path.to_string_lossy());
       }
       _ => (),
