@@ -24,12 +24,12 @@ impl Plugin for BlendPlugin {
       .add_systems(Update, update)
       .init_asset_loader::<BlendFileLoader>()
       .init_asset::<BlendFile>()
-      .insert_resource::<BlendFiles>(BlendFiles {
+      .insert_resource::<BlendResource>(BlendResource {
         root: self.root.clone(),
         files: self.paths.clone().into_iter().map(|v| (v, None)).collect(),
       })
       .register_type::<BlendFile>()
-      .register_type::<BlendFiles>();
+      .register_type::<BlendResource>();
   }
 }
 
@@ -62,12 +62,12 @@ impl AssetLoader for BlendFileLoader {
 }
 
 #[derive(Resource, Reflect, Debug)]
-pub struct BlendFiles {
+pub struct BlendResource {
   pub root: PathBuf,
   pub files: Vec<(PathBuf, Option<Handle<BlendFile>>)>,
 }
 
-fn setup(asset_server: Res<AssetServer>, mut blend_files: ResMut<BlendFiles>) {
+fn setup(asset_server: Res<AssetServer>, mut blend_files: ResMut<BlendResource>) {
   for file in blend_files.files.iter_mut() {
     file.1 = Some(asset_server.load(file.0.clone()));
   }
@@ -75,7 +75,7 @@ fn setup(asset_server: Res<AssetServer>, mut blend_files: ResMut<BlendFiles>) {
 
 fn update(
   asset_server: Res<AssetServer>,
-  blend_files: Res<BlendFiles>,
+  blend_files: Res<BlendResource>,
   mut events: EventReader<AssetEvent<BlendFile>>,
 ) {
   for event in events.read() {
