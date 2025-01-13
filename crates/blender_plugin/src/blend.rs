@@ -7,13 +7,18 @@ use bevy::{
 use thiserror::Error;
 
 pub(super) struct BlendPlugin {
+  blender_path: PathBuf,
   pub root: PathBuf,
   pub paths: Vec<PathBuf>,
 }
 
 impl BlendPlugin {
-  pub fn new(root: PathBuf, paths: Vec<PathBuf>) -> Self {
-    Self { root, paths }
+  pub fn new(blender_path: PathBuf, root: PathBuf, paths: Vec<PathBuf>) -> Self {
+    Self {
+      blender_path,
+      root,
+      paths,
+    }
   }
 }
 
@@ -25,6 +30,7 @@ impl Plugin for BlendPlugin {
       .init_asset_loader::<BlendFileLoader>()
       .init_asset::<BlendFile>()
       .insert_resource::<BlendResource>(BlendResource {
+        blender_path: self.blender_path.clone(),
         assets_root: self.root.clone(),
         files: self.paths.clone().into_iter().map(|v| (v, None)).collect(),
       })
@@ -63,6 +69,7 @@ impl AssetLoader for BlendFileLoader {
 
 #[derive(Resource, Reflect, Debug)]
 pub struct BlendResource {
+  pub blender_path: PathBuf,
   pub assets_root: PathBuf,
   pub files: Vec<(PathBuf, Option<Handle<BlendFile>>)>,
 }
