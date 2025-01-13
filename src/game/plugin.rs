@@ -16,7 +16,9 @@ impl Plugin for GamePlugin {
       CameraPlugin,
       LevelPlugin,
       PlayerPlugin,
-      BlenderHotReloadPlugin,
+      BlenderHotReloadPlugin::new(
+        r#"C:\Program Files\Blender Foundation\Blender 4.2\blender-launcher.exe"#,
+      ),
     ));
 
     #[cfg(debug_assertions)]
